@@ -18,9 +18,9 @@
   <script type="text/javascript">
     // Get the actual curve inside the SVG. You could make differemt
     // parts of a more complex SVG do different things...
-    var path = document.getElementsByTagName('path')[0];
+    var icon = document.getElementsByTagName('svg')[0];
     // Make sure your mouse cursor turns into a hand when over it, and gray it out
-    path.style="cursor:pointer;fill:#BBB";
+    icon.style="cursor:pointer;color:#BBB";
     // the possible states we could be in
     var state = 0;
     var states = [
@@ -30,11 +30,11 @@
       { color : "blue", command : "digitalWrite([LED3,LED2,LED1],4);\n" },
     ];
     // Now send commands to turn the LED on or off
-    path.addEventListener("click", function() {
+    icon.addEventListener("click", function() {
       state++;
       if (state>=states.length)
         state=0;
-      path.style.fill=states[state].color;
+      icon.style.fill=states[state].color;
       Puck.write(states[state].command);
     });
   </script>
